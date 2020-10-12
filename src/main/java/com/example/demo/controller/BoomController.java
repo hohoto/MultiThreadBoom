@@ -13,6 +13,8 @@ public class BoomController {
 
     IndexCommand indexCommand = new IndexCommand();
 
+    String endName;
+
     @RequestMapping("/")
     public ModelAndView UserController(){
         ModelAndView mv = new ModelAndView();
@@ -27,20 +29,22 @@ public class BoomController {
         if(numBean.getUserCode()!=null){
             oldName = numBean.getUserCode();
         }
-        System.out.println(oldName);
         Player a = new Player(indexCommand,oldName);
-        System.out.println(a.getUsername());
         if(numBean.getNum()==null){
             a.setNum(0);
             a.start();
         }
         else{
-            a.setNum(Double.valueOf(numBean.num));
+            a.setNum(Integer.valueOf(numBean.num));
             a.run();
             if(indexCommand.isToF()){
-                mv.addObject("ToF","游戏结束,当前数字为"+indexCommand.getIndex()+"，玩家"+a.getUsername()+"触发炸弹");
+                if(endName==null){
+                    endName = a.getUsername();
+                }
+                mv.addObject("ToF","游戏结束,当前数字为"+indexCommand.getIndex()+"，玩家"+endName+"触发炸弹");
             }
         }
+        mv.addObject("nowNum",indexCommand.getIndex());
         mv.setViewName("index");
         return mv;
     }

@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>玩家代码</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 <form action="/Boom" method="post">
@@ -26,7 +26,7 @@
         var Days = 1;
         var exp = new Date();
         exp.setTime(exp.getTime() + Days*24*60*60*30);
-        document.cookie = name + "="+ escape (value);
+        document.cookie = name + "=" + escape (value) + ";expires=" + exp.toGMTString();;
     }
 </script>
 <script type="text/javascript">

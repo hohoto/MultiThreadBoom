@@ -4,7 +4,7 @@ public class IndexCommand {
 
     static boolean ToF;
 
-    static double index = Math.random()*(150-10)+10;
+    static int index = (int)(Math.random()*(150-10)+10);
 
     public static double getIndex() {
         return index;

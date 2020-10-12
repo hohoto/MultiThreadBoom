@@ -9,12 +9,15 @@
 <html>
 <head>
     <title>多线程数字炸弹</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 <form action="">
     <div>
         <input id="num" name="num" value="">请输入10到150的数字
+    </div>
+    <div>
+        当前数字为${nowNum}
     </div>
     <div>
         <input id="userCode" name="userCode" style="display: none">

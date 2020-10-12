@@ -4,7 +4,7 @@ public class Player extends Thread{
 
     IndexCommand indexCommand;
 
-    public double num;
+    public int num;
 
     public String username;
 
@@ -21,7 +21,7 @@ public class Player extends Thread{
         this.username = username;
     }
 
-    public void setNum(double num){
+    public void setNum(int num){
         this.num = num;
     }
 
