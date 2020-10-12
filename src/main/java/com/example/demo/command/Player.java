@@ -6,8 +6,19 @@ public class Player extends Thread{
 
     public double num;
 
-    public Player(IndexCommand indexCommand,String mode){
+    public String username;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Player(IndexCommand indexCommand,String username){
         this.indexCommand = indexCommand;
+        this.username = username;
     }
 
     public void setNum(double num){

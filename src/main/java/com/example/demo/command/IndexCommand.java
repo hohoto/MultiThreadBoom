@@ -2,7 +2,7 @@ package com.example.demo.command;
 
 public class IndexCommand {
 
-    static boolean ToF = false;
+    static boolean ToF;
 
     static double index = Math.random()*(150-10)+10;
 
@@ -15,10 +15,13 @@ public class IndexCommand {
     }
 
     public synchronized void subNum(double num) throws Exception{
-        if(index<0){
-            ToF = true;
+        if(!ToF){
+            if((index-=num) < 0 ){
+                ToF = true;
+            }
+            else {
+                ToF = false;
+            }
         }
-        index -= num;
-        ToF = false;
     }
 }
