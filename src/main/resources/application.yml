@@ -1,16 +1,9 @@
 
 spring:
-  datasource:
-    # jdbc:mysql://localhost:3306/test 数据库地址
-    url: jdbc:mysql://localhost:3306/demobase?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-    username: root # 数据库用户名
-    password: qwert  # 数据库密码
-    driver-class-name: com.mysql.cj.jdbc.Driver  # 数据库驱动
-
   mvc:
     view:
-      prefix: /WEB-INF/static/
-      suffix: .jsp
+      prefix: /
+      suffix: .html
 
 server:
   port: 8080
