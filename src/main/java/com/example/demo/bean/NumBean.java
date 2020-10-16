@@ -1,6 +1,6 @@
 package com.example.demo.bean;
 
-public class NumBean {
+public class NumBean{
     public String num;
 
     public String userCode;
