@@ -6,7 +6,11 @@ import com.example.demo.command.IndexCommand;
 import com.example.demo.command.Player;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class BoomController {
@@ -22,10 +26,22 @@ public class BoomController {
         return mv;
     }
 
-    @RequestMapping("/Boom")
-    public ModelAndView MyController(NumBean numBean, PlayerBean playerBean){
+    @RequestMapping("index")
+    public ModelAndView IndexController(){
         ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/Boom")
+    public HashMap MyController(NumBean numBean, PlayerBean playerBean){
         String oldName = playerBean.getUsername();
+        String text = "游戏继续";
+
+        HashMap hashMap = new HashMap();
+
         if(numBean.getUserCode()!=null){
             oldName = numBean.getUserCode();
         }
@@ -41,11 +57,11 @@ public class BoomController {
                 if(endName==null){
                     endName = a.getUsername();
                 }
-                mv.addObject("ToF","游戏结束,当前数字为"+indexCommand.getIndex()+"，玩家"+endName+"触发炸弹");
+                text = "游戏结束,当前数字为"+indexCommand.getIndex()+"，玩家"+endName+"触发炸弹";
             }
         }
-        mv.addObject("nowNum",indexCommand.getIndex());
-        mv.setViewName("index");
-        return mv;
+        hashMap.put("ToF",text);
+        hashMap.put("nowNum",indexCommand.getIndex());
+        return hashMap;
     }
 }

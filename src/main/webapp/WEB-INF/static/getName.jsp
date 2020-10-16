@@ -12,7 +12,7 @@
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-<form action="/Boom" method="post">
+<form action="index" method="post">
     <div align="center">
         <input id = "username" name = "username" value="">请输入玩家代码
     </div>
@@ -21,7 +21,6 @@
     </div>
 </form>
 <script type="text/javascript">
-    console.log("======")
     function setCookie(name,value) {
         var Days = 1;
         var exp = new Date();

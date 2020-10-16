@@ -4,7 +4,7 @@ public class IndexCommand {
 
     static boolean ToF;
 
-    static int index = (int)(Math.random()*(150-10)+10);
+    static int index = (int)(10+Math.random()*(20-10+1));
 
     public static double getIndex() {
         return index;
@@ -14,9 +14,9 @@ public class IndexCommand {
         return ToF;
     }
 
-    public synchronized void subNum(double num) throws Exception{
+    public synchronized void subNum(double num){
         if(!ToF){
-            if((index-=num) < 0 ){
+            if((index+=num) >= 100 ){
                 ToF = true;
             }
             else {

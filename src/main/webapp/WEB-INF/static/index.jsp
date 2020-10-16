@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Calendar" %><%--
   Created by IntelliJ IDEA.
   User: guo13
   Date: 2020/10/9
@@ -14,22 +15,19 @@
 <body>
 <form action="">
     <div>
-        <input id="num" name="num" value="">请输入10到150的数字
+        <input id="num" name="num" value="">请输入0-10的数字
     </div>
-    <div>
-        当前数字为${nowNum}
-    </div>
+    <div id="ToF"></div>
+    <div id="nowNUm"></div>
     <div>
         <input id="userCode" name="userCode" style="display: none">
     </div>
     <div>
-        <input type="submit" id="button" value="提交">
+        <input type="button" id="button" value="提交" onclick="updataNum()">
     </div>
 </form>
-<div>
-    ${ToF}
-</div>
 <script>
+    get();
     function getCookie(name)
     {
         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
@@ -38,11 +36,35 @@
         else
             return null;
     }
-</script>
-<script>
-    get();
     function get(){
         $("#userCode").val(getCookie("username"));
+    }
+</script>
+<script>
+    function updataNum(){
+        let num=$("#num").val();
+        if(parseInt(num) > 10){
+            alert("请输入10以内的数")
+        } else {
+            console.log("====");
+            $.ajax({
+                url:"/Boom",
+                type:"POST",
+                data:{
+                    num:$("#num").val(),
+                    userCode:getCookie("username"),
+                },
+                datatype:"json",
+                success: function (data){
+                    $("#ToF").text(data.ToF);
+                    $("#nowNUm").text("当前数字为"+data.nowNum);
+                },
+                error: function (){
+                    alert("请输入数字");
+                }
+            })
+
+        }
     }
 </script>
 </body>
